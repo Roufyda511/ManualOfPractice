@@ -1,0 +1,188 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script  src="/main.js"></script>
+
+    <style>
+        body{
+            margin-top:20px;
+            background-color: #eee;
+        }
+
+
+            .search-result-categories>li>a {
+                color: #b6b6b6;
+                font-weight: 400
+            }
+
+            .search-result-categories>li>a:hover {
+                background-color: #ddd;
+                color: #555
+            }
+
+            .search-result-categories>li>a>.glyphicon {
+                margin-right: 5px
+            }
+
+            .search-result-categories>li>a>.badge {
+                float: right
+            }
+
+            .search-results-count {
+                margin-top: 10px
+            }
+
+            .search-result-item {
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 4px
+            }
+
+            .search-result-item:after,
+            .search-result-item:before {
+                content: " ";
+                display: table
+            }
+
+            .search-result-item:after {
+                clear: both
+            }
+
+            .search-result-item .image-link {
+                display: block;
+                overflow: hidden;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px
+            }
+
+            @media (min-width:768px) {
+                .search-result-item .image-link {
+                    display: inline-block;
+                    margin: -20px 0 -20px -20px;
+                    float: left;
+                    width: 200px;
+                }
+            }
+
+            @media (max-width:767px) {
+                .search-result-item .image-link {
+                    max-height: 200px
+                }
+            }
+
+            .search-result-item .image {
+                max-width: 100%
+            }
+
+            .search-result-item .info {
+                margin-top: 2px;
+                font-size: 12px;
+                color: #999
+            }
+
+            .search-result-item .description {
+                font-size: 13px
+            }
+
+            .search-result-item+.search-result-item {
+                margin-top: 20px
+            }
+
+            @media (min-width:768px) {
+                .search-result-item-body {
+                    margin-left: 200px
+                }
+            }
+
+            .search-result-item-heading {
+                font-weight: 400
+            }
+
+            .search-result-item-heading>a {
+                color: #555
+            }
+
+            @media (min-width:768px) {
+                .search-result-item-heading {
+                    margin: 0
+                }
+            }
+         
+    </style>
+   
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <br/>
+        <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <form class="card card-sm"  action="/courses/course" method="POST">
+                            <div class="card-body row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <i class="fas fa-search h4 text-body"></i>
+                                </div>
+                                <!--end of col-->
+                                <div class="col">
+                                    <input class="form-control form-control-lg form-control-borderless" name="courseName" type="search" placeholder="Search topics or keywords">
+                                </div>
+                                <!--end of col-->
+                                <div class="col-auto">
+                                    <button class="btn btn-lg btn-success" type="submit">Search</button>
+                                </div>
+                                <!--end of col-->
+                            </div>
+                            <div>
+                                <% if(size > 0) { %>
+                                <div  id="searchResult" class="col-md-9 col-md-pull-3" >
+                                    <p class="search-results-count">About  <%= size %> results</p>
+                                    <% for (const i in courses) { %>
+                                        <section class="search-result-item">
+                                            <a class="image-link" href="#"><img class="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                                            </a>
+                                            <div class="search-result-item-body">
+                                                <div class="row">
+                                                    <div class="col-sm-9">
+                                                        <h4 class="search-result-item-heading"><a href="#"><%= courses[i].path %></a></h4>
+                                                        <p class="info"><%= courses[i].name %></p>
+                                                        <p class="description"><%= courses[i].description %></p>
+                                                    </div>
+                                                    <div class="col-sm-3 text-align-center">
+                                                        <p class="value3 mt-sm">$9, 700</p>
+                                                        <p class="fs-mini text-muted">PER WEEK</p><a class="btn btn-primary btn-info btn-sm" href="#">Start Activity</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    <% } %>
+
+                            </div>
+                            <% }else{ %>
+                                <div></div>
+                            <% } %>   
+                        </form>
+                    </div>
+                <!--end of col-->
+            </div>
+    </div>
+    
+
+
+</body>
+
+   
+
+   
+  
+
+  
+</body>
+
+</html>
