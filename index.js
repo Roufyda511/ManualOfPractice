@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const login =require('./login');
 const register = require('./register');
 const courses = require('./courses');
-
+require('dotenv').config();
 //const zoom = require('./zoom/zoom');
 const app = express();
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
-app.listen(3000);
+app.listen(process.env.PORT);
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/public');
